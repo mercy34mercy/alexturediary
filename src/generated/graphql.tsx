@@ -1,8 +1,11 @@
+import { gql } from '@apollo/client';
+import * as Apollo from '@apollo/client';
 export type Maybe<T> = T | null;
 export type InputMaybe<T> = Maybe<T>;
 export type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K] };
 export type MakeOptional<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]?: Maybe<T[SubKey]> };
 export type MakeMaybe<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]: Maybe<T[SubKey]> };
+const defaultOptions = {} as const;
 /** All built-in and custom scalars, mapped to their actual values */
 export type Scalars = {
   ID: string;
@@ -97,3 +100,79 @@ export type GetuserQueryVariables = Exact<{
 
 
 export type GetuserQuery = { __typename?: 'Query', User: { __typename?: 'Me', User: { __typename?: 'User', Userid: string, Name: string }, Diary: Array<{ __typename?: 'Diary', Diaryid: string, Word?: string | null, Imageurl: string, Userid: string, CreatedAt: any, UpdatedAt: any }>, Followee: Array<{ __typename?: 'UserDiary', User?: { __typename?: 'User', Userid: string, Name: string } | null, Diary: Array<{ __typename?: 'Diary', Diaryid: string, Word?: string | null, Imageurl: string, Userid: string, CreatedAt: any, UpdatedAt: any }> }>, Follower: Array<{ __typename?: 'UserDiary', User?: { __typename?: 'User', Userid: string, Name: string } | null, Diary: Array<{ __typename?: 'Diary', Diaryid: string, Word?: string | null, Imageurl: string, Userid: string, CreatedAt: any, UpdatedAt: any }> }> } };
+
+
+export const GetuserDocument = gql`
+    query getuser($argument: ID!) {
+  User(argument: $argument) {
+    User {
+      Userid
+      Name
+    }
+    Diary {
+      Diaryid
+      Word
+      Imageurl
+      Userid
+      CreatedAt
+      UpdatedAt
+    }
+    Followee {
+      User {
+        Userid
+        Name
+      }
+      Diary {
+        Diaryid
+        Word
+        Imageurl
+        Userid
+        CreatedAt
+        UpdatedAt
+      }
+    }
+    Follower {
+      User {
+        Userid
+        Name
+      }
+      Diary {
+        Diaryid
+        Word
+        Imageurl
+        Userid
+        CreatedAt
+        UpdatedAt
+      }
+    }
+  }
+}
+    `;
+
+/**
+ * __useGetuserQuery__
+ *
+ * To run a query within a React component, call `useGetuserQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetuserQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetuserQuery({
+ *   variables: {
+ *      argument: // value for 'argument'
+ *   },
+ * });
+ */
+export function useGetuserQuery(baseOptions: Apollo.QueryHookOptions<GetuserQuery, GetuserQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<GetuserQuery, GetuserQueryVariables>(GetuserDocument, options);
+      }
+export function useGetuserLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetuserQuery, GetuserQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<GetuserQuery, GetuserQueryVariables>(GetuserDocument, options);
+        }
+export type GetuserQueryHookResult = ReturnType<typeof useGetuserQuery>;
+export type GetuserLazyQueryHookResult = ReturnType<typeof useGetuserLazyQuery>;
+export type GetuserQueryResult = Apollo.QueryResult<GetuserQuery, GetuserQueryVariables>;

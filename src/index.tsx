@@ -12,7 +12,7 @@ import {
 } from "@apollo/client";
 
 const link = createHttpLink({
-  uri: "https://watnow-362606.et.r.appspot.com/graphql",
+  uri: "http://localhost:8080/",
   credentials: "include",
 });
 
