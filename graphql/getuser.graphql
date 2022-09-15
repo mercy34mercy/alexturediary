@@ -1,0 +1,40 @@
+query getuser($argument: ID!) {
+  User(argument: $argument) {
+    User{
+        Userid
+        Name
+    }Diary{
+        Diaryid
+        Word
+        Imageurl
+        Userid
+        CreatedAt
+        UpdatedAt
+    }Followee{
+        User{
+            Userid
+            Name
+        }Diary{
+            Diaryid
+            Word
+            Imageurl
+            Userid
+            CreatedAt
+            UpdatedAt
+        }
+    }Follower{
+        User{
+            Userid
+            Name
+        }Diary{
+            Diaryid
+            Word
+            Imageurl
+            Userid
+            CreatedAt
+            UpdatedAt
+        }
+    }
+  }
+}
+

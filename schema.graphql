@@ -1,0 +1,58 @@
+# GraphQL schema example
+#
+# https://gqlgen.com/getting-started/
+
+scalar Timestamp
+
+type Diary {
+  Diaryid: ID!
+  Word: String
+  Imageurl:String!
+  Userid: ID!
+  CreatedAt: Timestamp!
+	UpdatedAt: Timestamp!
+}
+
+type UserDiary{
+  User:User
+  Diary: [Diary!]!
+}
+
+type User{
+  Userid: ID!
+  Name: String!
+}
+
+type Me {
+  User:User!
+  Diary:[Diary!]!
+  Followee:[UserDiary!]!
+  Follower:[UserDiary!]!
+}
+
+
+type Query {
+  User(argument:ID!): Me!
+}
+
+input NewDiary {
+  Word: String
+  Userid: String!
+  Imageurl:String!
+}
+
+input NewUser{
+  Userid:String!
+  Name:String!
+}
+
+input NewFollow{
+  Followee:String!
+  Follower:String!
+}
+
+type Mutation {
+  createDiary(input: NewDiary!): Diary!
+  createUser(input: NewUser): User!
+  createFollow(input:NewFollow): User!
+}

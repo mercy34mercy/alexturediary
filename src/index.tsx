@@ -4,12 +4,32 @@ import './index.css';
 import reportWebVitals from './reportWebVitals';
 import { RouterConfig } from './RouterConfig';
 
+import {
+  ApolloClient,
+  InMemoryCache,
+  ApolloProvider,
+  createHttpLink,
+} from "@apollo/client";
+
+const link = createHttpLink({
+  uri: "https://watnow-362606.et.r.appspot.com/graphql",
+  credentials: "include",
+});
+
+const client = new ApolloClient({
+  cache: new InMemoryCache(),
+  link: link,
+});
+
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 root.render(
+
   <React.StrictMode>
+      <ApolloProvider client={client}>
     <RouterConfig></RouterConfig>
+    </ApolloProvider>
   </React.StrictMode>
 );
 
