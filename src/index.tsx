@@ -12,7 +12,7 @@ import {
 } from "@apollo/client";
 
 const link = createHttpLink({
-  uri: "http://localhost:8080/",
+  uri: "http://localhost:8080/query",
   credentials: "include",
 });
 

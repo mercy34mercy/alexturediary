@@ -3,17 +3,29 @@ import { useGetuserQuery } from './generated/graphql'
  
 
 export const MyComponent = () => {
-    const { loading, data } = useGetuserQuery({  variables: {argument: "abcdef"},});
-  if(!loading && data != undefined){
-    return(
-        <div>
-            {data.User.Diary[0].Diaryid}
-        </div>
-    )}else{
-        return(
-        <div>
-            {"#fdadfsa"}
-        </div>
-        )
-  }
+    const {  data, error, loading } = useGetuserQuery({  variables: {argument: "abcdef"},});
+    if(loading) {
+        return <p>...loading</p>
+      }
+      
+      if(error) {
+        return <p>Error!</p>
+      }
+
+      if(data == undefined){
+        return <p>Error!</p>
+      }
+
+
+      return (
+        <ul>
+          {data.User.Diary.map((d) =>(
+            <li key={d.Diaryid}>
+                <p>{d.Word}</p>
+                <img src={d.Imageurl} alt="" />
+                <p>{d.CreatedAt}</p>
+            </li>
+          ))}
+        </ul>
+      );
 }
