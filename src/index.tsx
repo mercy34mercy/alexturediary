@@ -12,8 +12,8 @@ import {
 } from "@apollo/client";
 
 const link = createHttpLink({
-  uri: "http://localhost:8080/query",
-  credentials: "include",
+  uri: process.env.REACT_APP_DATABASEURL,
+  // credentials: "include",
 });
 
 const client = new ApolloClient({

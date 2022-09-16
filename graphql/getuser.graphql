@@ -7,9 +7,12 @@ query getuser($argument: ID!) {
         Diaryid
         Word
         Imageurl
-        Userid
         CreatedAt
         UpdatedAt
+        User{
+            Userid
+            Name
+        }
     }Followee{
         User{
             Userid
@@ -18,9 +21,12 @@ query getuser($argument: ID!) {
             Diaryid
             Word
             Imageurl
-            Userid
             CreatedAt
             UpdatedAt
+            User{
+                Userid
+                Name
+            }
         }
     }Follower{
         User{
@@ -30,9 +36,12 @@ query getuser($argument: ID!) {
             Diaryid
             Word
             Imageurl
-            Userid
             CreatedAt
             UpdatedAt
+            User{
+                Userid
+                Name
+            }
         }
     }
   }
