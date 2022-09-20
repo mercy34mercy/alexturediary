@@ -22,7 +22,7 @@ export type Diary = {
   Diaryid: Scalars['ID'];
   Imageurl: Scalars['String'];
   UpdatedAt: Scalars['Timestamp'];
-  User: User;
+  Userid: Scalars['ID'];
   Word?: Maybe<Scalars['String']>;
 };
 
@@ -100,7 +100,7 @@ export type GetuserQueryVariables = Exact<{
 }>;
 
 
-export type GetuserQuery = { __typename?: 'Query', User: { __typename?: 'Me', User: { __typename?: 'User', Userid: string, Name: string }, Diary: Array<{ __typename?: 'Diary', Diaryid: string, Word?: string | null, Imageurl: string, CreatedAt: any, UpdatedAt: any, User: { __typename?: 'User', Userid: string, Name: string } }>, Followee: Array<{ __typename?: 'UserDiary', User?: { __typename?: 'User', Userid: string, Name: string } | null, Diary: Array<{ __typename?: 'Diary', Diaryid: string, Word?: string | null, Imageurl: string, CreatedAt: any, UpdatedAt: any, User: { __typename?: 'User', Userid: string, Name: string } }> }>, Follower: Array<{ __typename?: 'UserDiary', User?: { __typename?: 'User', Userid: string, Name: string } | null, Diary: Array<{ __typename?: 'Diary', Diaryid: string, Word?: string | null, Imageurl: string, CreatedAt: any, UpdatedAt: any, User: { __typename?: 'User', Userid: string, Name: string } }> }> } };
+export type GetuserQuery = { __typename?: 'Query', User: { __typename?: 'Me', User: { __typename?: 'User', Userid: string, Name: string }, Diary: Array<{ __typename?: 'Diary', Diaryid: string, Word?: string | null, Imageurl: string, CreatedAt: any, UpdatedAt: any, Userid: string }>, Followee: Array<{ __typename?: 'UserDiary', User?: { __typename?: 'User', Userid: string, Name: string } | null, Diary: Array<{ __typename?: 'Diary', Diaryid: string, Word?: string | null, Imageurl: string, CreatedAt: any, UpdatedAt: any, Userid: string }> }>, Follower: Array<{ __typename?: 'UserDiary', User?: { __typename?: 'User', Userid: string, Name: string } | null, Diary: Array<{ __typename?: 'Diary', Diaryid: string, Word?: string | null, Imageurl: string, CreatedAt: any, UpdatedAt: any, Userid: string }> }> } };
 
 
 export const GetuserDocument = gql`
@@ -116,10 +116,7 @@ export const GetuserDocument = gql`
       Imageurl
       CreatedAt
       UpdatedAt
-      User {
-        Userid
-        Name
-      }
+      Userid
     }
     Followee {
       User {
@@ -132,10 +129,7 @@ export const GetuserDocument = gql`
         Imageurl
         CreatedAt
         UpdatedAt
-        User {
-          Userid
-          Name
-        }
+        Userid
       }
     }
     Follower {
@@ -149,10 +143,7 @@ export const GetuserDocument = gql`
         Imageurl
         CreatedAt
         UpdatedAt
-        User {
-          Userid
-          Name
-        }
+        Userid
       }
     }
   }

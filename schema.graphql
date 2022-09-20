@@ -8,7 +8,7 @@ type Diary {
   Diaryid: ID!
   Word: String
   Imageurl:String!
-  User: User!
+  Userid: ID!
   CreatedAt: Timestamp!
 	UpdatedAt: Timestamp!
 }

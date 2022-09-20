@@ -9,10 +9,7 @@ query getuser($argument: ID!) {
         Imageurl
         CreatedAt
         UpdatedAt
-        User{
-            Userid
-            Name
-        }
+        Userid
     }Followee{
         User{
             Userid
@@ -23,10 +20,7 @@ query getuser($argument: ID!) {
             Imageurl
             CreatedAt
             UpdatedAt
-            User{
-                Userid
-                Name
-            }
+            Userid
         }
     }Follower{
         User{
@@ -38,10 +32,7 @@ query getuser($argument: ID!) {
             Imageurl
             CreatedAt
             UpdatedAt
-            User{
-                Userid
-                Name
-            }
+            Userid
         }
     }
   }

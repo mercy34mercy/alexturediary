@@ -1,17 +1,29 @@
 import React from 'react';
-import logo from './logo.svg';
+import { useEffect, useState } from 'react';
 import './App.css';
 import { FeedView } from './FeedView';
 import Header from './Header';
+import Loading from './Loading ';
+
+// const App = () => {
+  
+//   const [isLoading,setIsLoading] = useState(true)
+
+//   return (
+//     <>
+//     {isLoading && <Loading/>}
+//     </>
+//       );
+// }
 
 
 const App = () => {
   return (
     <div className="App">
-      <FeedView></FeedView>
       <Header></Header>
+      <FeedView></FeedView>
     </div>
   );
 }
 
-export default App;
+export default App
