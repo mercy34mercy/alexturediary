@@ -2,7 +2,7 @@ import React from 'react';
 import { useGetuserQuery } from './generated/graphql'
 
 
-export const MyComponent = () => {
+export const FeedView = () => {
     const { data, error, loading } = useGetuserQuery({ variables: { argument: "abcdef" }, });
     if (loading) {
         return <p>...loading</p>
