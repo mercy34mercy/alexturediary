@@ -3,8 +3,9 @@ import { GetAlldiaryQuery, useGetuserQuery } from "../../generated/graphql";
 import styled from "styled-components";
 import { createGlobalStyle } from "styled-components";
 import { getMonthNameFromDiary } from "../../pages/Timeline";
+import { Element as ScrollElement } from "react-scroll";
 
-export type Diary =  {
+export type Diary = {
     __typename?: "Query" | undefined;
     AllDiary: {
         __typename?: "Diary" | undefined;
@@ -14,25 +15,116 @@ export type Diary =  {
         CreatedAt: any;
         UpdatedAt: any;
         User: {
-        __typename?: "User" | undefined;
+            __typename?: "User" | undefined;
             Userid: string;
-            Name:string;
+            Name: string;
         };
         Emotion: {
-        __typename?: "Emotion" | undefined;
-            Sad:string;
-            Happy:string;
-            Fear:string;
-            Surprise:string;
-            Angry:string;
+            __typename?: "Emotion" | undefined;
+            Sad: string;
+            Happy: string;
+            Fear: string;
+            Surprise: string;
+            Angry: string;
         };
     }[];
 }
 
 type prop = {
-    data:GetAlldiaryQuery
+    data: GetAlldiaryQuery
 }
 
+const BaseText = styled.a`
+    font-family: -apple-system, BlinkMacSystemFont, Roboto, "Segoe UI", "Helvetica Neue", HelveticaNeue, YuGothic, "Yu Gothic Medium", "Yu Gothic", Verdana, Meiryo, sans-serif;
+`
+
+const BasePostText = styled(BaseText)`
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+    color: #393939;
+`
+
+const UserName = styled(BasePostText)`
+    font-size: 24px;
+    letter-spacing:0.02em;
+    color: #BEBEBE;
+    text-align: left;
+    position: absolute;
+    left: 0px;
+    bottom: 0px;
+`
+
+const WordContainer = styled.div`
+    font-size: 36px;
+    color: #000000;
+    position: absolute;
+    text-align: left;
+    width: 240px;
+    height: auto;
+    left:0px;
+    bottom: 30px;
+`
+const PostWord = styled(BasePostText)`
+    color: black;
+    // color: #ededed;
+    // mix-blend-mode: exclusion;
+`
+
+const CreatedAtContainer = styled.div`
+    position: absolute;
+    text-align: left;
+    width: 266px;
+    height: 58px;
+    left: 0px;
+    top: -15px;
+`
+
+const CreatedAtDay = styled(BasePostText)`
+    font-size: 60px;
+    /* position: absolute; */
+    /* width: 79px;
+    height: 58px;
+    left: 0px;
+    top: -15px; */
+`
+
+const CreatedAtMonth = styled(BasePostText)`
+    font-size: 18px;
+    margin-left: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    /* position: absolute;
+    bottom: 0; */
+`
+
+const PostContainer = styled.div`
+    margin-top: calc(50vh - 150px);
+    margin-bottom: calc(50vh - 150px);
+    background-color: white;
+`
+
+const PostDiv = styled.div`
+    width: 555px;
+    height: 300px;
+    /* background-color: pink; //debug */
+    margin: 0 auto;
+    margin-top: 200px;
+    position: relative;
+`
+
+const PostImageWrap = styled.div`
+    width: 300px;
+    height: 300px;
+`
+
+const PostImage = styled.img`
+    width: 300px;
+    height: 300px;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    right: 0;
+`
 
 export const FeedView = (prop: prop) => {
     var prop_temp = {
@@ -92,118 +184,32 @@ export const FeedView = (prop: prop) => {
         },
     };
 
-    const BaseText = styled.a`
-        font-family: -apple-system, BlinkMacSystemFont, Roboto, "Segoe UI", "Helvetica Neue", HelveticaNeue, YuGothic, "Yu Gothic Medium", "Yu Gothic", Verdana, Meiryo, sans-serif;
-    `
-
-    const BasePostText = styled(BaseText)`
-        font-family: 'Montserrat', sans-serif;
-        font-weight: bold;
-        color: #393939;
-    `
-
-    const UserName = styled(BasePostText)`
-        font-size: 24px;
-        letter-spacing:0.02em;
-        color: #BEBEBE;
-        text-align: left;
-        position: absolute;
-        left: 0px;
-        bottom: 0px;
-    `
-
-    const WordContainer = styled.div`
-        font-size: 36px;
-        color: #000000;
-        position: absolute;
-        text-align: left;
-        width: 240px;
-        height: auto;
-        left:0px;
-        bottom: 30px;
-    `
-    const PostWord = styled(BasePostText)`
-        color: black;
-        // color: #ededed;
-        // mix-blend-mode: exclusion;
-    `
-
-    const CreatedAtContainer = styled.div`
-        position: absolute;
-        text-align: left;
-        width: 266px;
-        height: 58px;
-        left: 0px;
-        top: -15px;
-    `
-
-    const CreatedAtDay = styled(BasePostText)`
-        font-size: 60px;
-        /* position: absolute; */
-        /* width: 79px;
-        height: 58px;
-        left: 0px;
-        top: -15px; */
-    `
-
-    const CreatedAtMonth = styled(BasePostText)`
-        font-size: 18px;
-        margin-left: 12px;
-        text-transform: uppercase;
-        letter-spacing: 0.03em;
-        /* position: absolute;
-	    bottom: 0; */
-    `
-
-    const PostContainer = styled.div`
-        margin-top: calc(50vh - 150px);
-        margin-bottom: calc(50vh - 150px);
-        background-color: white;
-    `
-
-    const PostDiv = styled.div`
-        width: 555px;
-        height: 300px;
-        /* background-color: pink; //debug */
-        margin: 0 auto;
-        margin-top: 200px;
-        position: relative;
-    `
-
-    const PostImageWrap = styled.div`
-        width: 300px;
-        height: 300px;
-    `
-
-    const PostImage = styled.img`
-        width: 300px;
-        height: 300px;
-        object-fit: cover;
-        position: absolute;
-        top: 0;
-        right: 0;
-    `
-
+    var reversedAllDiary: Array<any> = []
+    prop.data.AllDiary.slice(0).reverse().map((d) => {
+        reversedAllDiary.push(d)
+    })
 
     return (
         <PostContainer>
             {/* {prop_temp.User.Diary.map((d) => ( */}
-            {prop.data.AllDiary.slice(0).reverse().map((d) => (
-                <PostDiv>
-                    <CreatedAtContainer>
-                        <CreatedAtDay>{new Date(d.CreatedAt).getDay()}</CreatedAtDay>
-                        <CreatedAtMonth>{getMonthNameFromDiary(d.CreatedAt)}</CreatedAtMonth>
-                    </CreatedAtContainer>
-                    <PostImageWrap>
-                        <PostImage src={d.Imageurl} alt=""/>
-                    </PostImageWrap>
-                    <WordContainer>
-                        <BasePostText>
-                            <PostWord>{d.Word}</PostWord>
-                        </BasePostText>
-                    </WordContainer>
-                    <UserName>{d.User.Name}</UserName>
-                </PostDiv>
+            {reversedAllDiary.map((d, index) => (
+                <ScrollElement name={"post_" + index.toString()}>
+                    <PostDiv>
+                        <CreatedAtContainer>
+                            <CreatedAtDay>{new Date(d.CreatedAt).getDay()}</CreatedAtDay>
+                            <CreatedAtMonth>{getMonthNameFromDiary(d.CreatedAt)}</CreatedAtMonth>
+                        </CreatedAtContainer>
+                        <PostImageWrap>
+                            <PostImage src={d.Imageurl} alt="" />
+                        </PostImageWrap>
+                        <WordContainer>
+                            <BasePostText>
+                                <PostWord>{d.Word}</PostWord>
+                            </BasePostText>
+                        </WordContainer>
+                        <UserName>{d.User.Name}</UserName>
+                    </PostDiv>
+                </ScrollElement>
             ))}
         </PostContainer>
 

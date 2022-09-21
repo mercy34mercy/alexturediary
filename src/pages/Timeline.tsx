@@ -7,7 +7,7 @@ import { FeedView } from '../components/templates/FeedView';
 import Header from '../components/atoms/Header';
 import Loading from '../components/atoms/Loading';
 import { Transition } from 'react-transition-group';
-import { animateScroll } from 'react-scroll';
+import { animateScroll, scroller } from 'react-scroll';
 
 
 export const getMonthNameFromDiary = (dateString: string) => {
@@ -23,14 +23,41 @@ const TimelineWrapper = () => {
     }
 
     const [isLoaded, setIsLoaded] = useState(false)
-    
-    if (!loading && !isLoaded){
-        setIsLoaded(true)
-        animateScroll.scrollTo(2000, {duration: 0, smooth: false})
-        console.log("tanomu")
+    const [beforeScroll, setBeforeScroll] = useState(window.pageYOffset)
+
+    useEffect(() => {
         setTimeout(() => {
-            animateScroll.scrollToTop({duration: 1300, smooth: "cubic-bezier(.13,.08,0,1)"})
-            console.log("umakuike")
+            setInterval(() => {
+                if (Math.floor(beforeScroll) % 500 != 0){
+                    if (beforeScroll == window.pageYOffset) {
+                        const index = getNearestPostIndex()
+                        console.log("scrolled to post_" + index);
+                        animateScroll.scrollTo(index * 500, {
+                            duration: 800,
+                            // delay: 100,
+                            smooth: true,
+                        })
+                    }
+                }
+                setBeforeScroll(window.pageYOffset)
+            }, 300)
+        }, 400)
+
+        const getNearestPostIndex = () => {
+            const scroll = window.pageYOffset
+            if (scroll % 500 < 250) {
+                return Math.floor(scroll / 500)
+            } else {
+                return Math.floor(scroll / 500 + 1)
+            }
+        }
+    })
+
+    if (!loading && !isLoaded) {
+        setIsLoaded(true)
+        animateScroll.scrollTo(2000, { duration: 0, smooth: false })
+        setTimeout(() => {
+            animateScroll.scrollToTop({ duration: 1300, smooth: "cubic-bezier(.13,.08,0,1)" })
         }, 20);
     }
 
@@ -72,11 +99,11 @@ const TimelineWrapper = () => {
                     </div>
                 )}
             </Transition>
-            <Timeline data= {data}/>
+            <Timeline data={data} />
         </>
     )
 
-    
+
 
 }
 
@@ -99,8 +126,8 @@ const Timeline = (prop: prop) => {
                 "UpdatedAt": "",
                 "User": {
                     "__typename": "User",
-                    "Userid":"",
-                    "Name":""
+                    "Userid": "",
+                    "Name": ""
                 },
                 "Emotion": {
                     "__typename": "Emotion",
@@ -120,8 +147,8 @@ const Timeline = (prop: prop) => {
                 "UpdatedAt": "",
                 "User": {
                     "__typename": "User",
-                    "Userid":"",
-                    "Name":""
+                    "Userid": "",
+                    "Name": ""
                 },
                 "Emotion": {
                     "__typename": "Emotion",
