@@ -1,24 +1,36 @@
 import React from "react";
-import { useGetuserQuery } from "../../generated/graphql";
+import { GetAlldiaryQuery, useGetuserQuery } from "../../generated/graphql";
 import styled from "styled-components";
 import { createGlobalStyle } from "styled-components";
 import { getMonthNameFromDiary } from "../../pages/Timeline";
 
-type Diary = {
+export type Diary =  {
     __typename?: "Query" | undefined;
     AllDiary: {
         __typename?: "Diary" | undefined;
         Diaryid: string;
-        Userid: string;
         Imageurl: string;
         Word?: string | null | undefined;
         CreatedAt: any;
         UpdatedAt: any;
+        User: {
+        __typename?: "User" | undefined;
+            Userid: string;
+            Name:string;
+        };
+        Emotion: {
+        __typename?: "Emotion" | undefined;
+            Sad:string;
+            Happy:string;
+            Fear:string;
+            Surprise:string;
+            Angry:string;
+        };
     }[];
 }
 
 type prop = {
-    data:Diary
+    data:GetAlldiaryQuery
 }
 
 
@@ -100,10 +112,6 @@ export const FeedView = (prop: prop) => {
         bottom: 0px;
     `
 
-    const Word = styled(BasePostText)`
-
-    `
-
     const WordContainer = styled.div`
         font-size: 36px;
         color: #000000;
@@ -113,6 +121,11 @@ export const FeedView = (prop: prop) => {
         height: auto;
         left:0px;
         bottom: 30px;
+    `
+    const PostWord = styled(BasePostText)`
+        color: black;
+        // color: #ededed;
+        // mix-blend-mode: exclusion;
     `
 
     const CreatedAtContainer = styled.div`
@@ -143,7 +156,7 @@ export const FeedView = (prop: prop) => {
     `
 
     const PostContainer = styled.div`
-
+        background-color: white;
     `
 
     const PostDiv = styled.div`
@@ -167,7 +180,8 @@ export const FeedView = (prop: prop) => {
         position: absolute;
         top: 0;
         right: 0;
-    `    
+    `
+
 
     return (
         <PostContainer>
@@ -179,14 +193,14 @@ export const FeedView = (prop: prop) => {
                         <CreatedAtMonth>{getMonthNameFromDiary(d.CreatedAt)}</CreatedAtMonth>
                     </CreatedAtContainer>
                     <PostImageWrap>
-                        <PostImage src={d.Imageurl} alt=""></PostImage>
+                        <PostImage src={d.Imageurl} alt=""/>
                     </PostImageWrap>
                     <WordContainer>
                         <BasePostText>
-                            <span style={{color: "black"}}>{d.Word}</span>
+                            <PostWord>{d.Word}</PostWord>
                         </BasePostText>
                     </WordContainer>
-                    <UserName>{d.Userid}</UserName>
+                    <UserName>{d.User.Name}</UserName>
                 </PostDiv>
             ))}
         </PostContainer>

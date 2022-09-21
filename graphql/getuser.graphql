@@ -9,7 +9,16 @@ query getuser($argument: ID!) {
         Imageurl
         CreatedAt
         UpdatedAt
+            User{
         Userid
+        Name
+    }Emotion{
+      Sad
+      Happy
+      Fear
+      Surprise
+      Angry
+    }
     }Followee{
         User{
             Userid
@@ -20,7 +29,16 @@ query getuser($argument: ID!) {
             Imageurl
             CreatedAt
             UpdatedAt
-            Userid
+                User{
+        Userid
+        Name
+    }Emotion{
+      Sad
+      Happy
+      Fear
+      Surprise
+      Angry
+    }
         }
     }Follower{
         User{
@@ -32,7 +50,16 @@ query getuser($argument: ID!) {
             Imageurl
             CreatedAt
             UpdatedAt
-            Userid
+                User{
+        Userid
+        Name
+    }Emotion{
+      Sad
+      Happy
+      Fear
+      Surprise
+      Angry
+    }
         }
     }
   }
