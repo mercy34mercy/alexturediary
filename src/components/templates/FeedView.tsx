@@ -167,12 +167,12 @@ export const FeedView = (prop: prop) => {
         position: absolute;
         top: 0;
         right: 0;
-    `
+    `    
 
     return (
         <PostContainer>
             {/* {prop_temp.User.Diary.map((d) => ( */}
-            {prop.data.AllDiary.map((d) => (
+            {prop.data.AllDiary.slice(0).reverse().map((d) => (
                 <PostDiv>
                     <CreatedAtContainer>
                         <CreatedAtDay>{new Date(d.CreatedAt).getDay()}</CreatedAtDay>
