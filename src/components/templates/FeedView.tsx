@@ -156,6 +156,8 @@ export const FeedView = (prop: prop) => {
     `
 
     const PostContainer = styled.div`
+        margin-top: calc(50% - 300px);
+        margin-bottom: calc(50% - 250px);
         background-color: white;
     `
 

@@ -7,6 +7,7 @@ import { FeedView } from '../components/templates/FeedView';
 import Header from '../components/atoms/Header';
 import Loading from '../components/atoms/Loading';
 import { Transition } from 'react-transition-group';
+import { animateScroll } from 'react-scroll';
 
 
 export const getMonthNameFromDiary = (dateString: string) => {
@@ -16,6 +17,19 @@ export const getMonthNameFromDiary = (dateString: string) => {
 
 const TimelineWrapper = () => {
     const { loading } = useGetAlldiaryQuery()
+
+    const [isLoaded, setIsLoaded] = useState(false)
+    
+    if (!loading && !isLoaded){
+        setIsLoaded(true)
+        animateScroll.scrollTo(1500, {duration: 0, smooth: false})
+        console.log("tanomu")
+        setTimeout(() => {
+            animateScroll.scrollToTop({duration: 1400, smooth: "easeOutCubic"})
+            console.log("umakuike")
+        }, 100);
+    }
+
     const nodeRef = useRef(null);
 
     type WindowCoverProps = {
@@ -111,35 +125,11 @@ const Timeline = () => {
         ]
     } as GetAlldiaryQuery
 
-    // const [isLoading, setIsLoading] = useState(true)
-
-    // top: ${props => props.loaded? "50%" : 0};
-
-
-    // const WindowCover = styled.div.attrs((props: WindowCoverProps) => ({
-    //     state: props.state || "exited",
-    // }))`
-
-    // const WindowCover = styled.div<WindowCoverProps>`
-    //     position: fixed;
-    //     top: ${(props) => (props.state == "entering" || props.state == "entered" ? "100%" : "0")};
-    //     width: 100%;
-    //     height: 100%;
-    //     z-index: 999;
-    //     background-color: pink;
-    //     display: flex;
-    //     align-items: center;
-    //     justify-content: center;
-    //     transition: all .5s ease-in-out;
-    // `
-
     if (error) {
         return <p>Error!</p>
     }
 
     console.log(data);
-
-    // document.getElementById("loading_cover")?.classList.add("cover_animation")
 
     return (
         <>
