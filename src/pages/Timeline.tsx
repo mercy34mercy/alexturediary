@@ -1,7 +1,7 @@
 import React from 'react'
 import { useEffect, useState, useRef } from 'react';
 import styled from 'styled-components';
-import { GetAlldiaryQuery, useGetAlldiaryQuery, useGetuserQuery } from '../generated/graphql';
+import { GetAlldiaryQuery, GetAlldiaryQueryResult, useGetAlldiaryQuery, useGetuserQuery } from '../generated/graphql';
 import { Diary } from '../components/templates/FeedView';
 import { FeedView } from '../components/templates/FeedView';
 import Header from '../components/atoms/Header';
@@ -16,18 +16,22 @@ export const getMonthNameFromDiary = (dateString: string) => {
 }
 
 const TimelineWrapper = () => {
-    const { loading } = useGetAlldiaryQuery()
+    const { data, error, loading } = useGetAlldiaryQuery()
+
+    if (error) {
+        return <p>Error!</p>
+    }
 
     const [isLoaded, setIsLoaded] = useState(false)
     
     if (!loading && !isLoaded){
         setIsLoaded(true)
-        animateScroll.scrollTo(1500, {duration: 0, smooth: false})
+        animateScroll.scrollTo(2000, {duration: 0, smooth: false})
         console.log("tanomu")
         setTimeout(() => {
-            animateScroll.scrollToTop({duration: 1400, smooth: "easeOutCubic"})
+            animateScroll.scrollToTop({duration: 1300, smooth: "cubic-bezier(.13,.08,0,1)"})
             console.log("umakuike")
-        }, 100);
+        }, 20);
     }
 
     const nodeRef = useRef(null);
@@ -68,15 +72,21 @@ const TimelineWrapper = () => {
                     </div>
                 )}
             </Transition>
-            <Timeline/>
+            <Timeline data= {data}/>
         </>
     )
 
+    
+
 }
 
-const Timeline = () => {
+type prop = {
+    data: any
+}
 
-    const { data, error, loading } = useGetAlldiaryQuery()
+const Timeline = (prop: prop) => {
+
+    // const { data, error, loading } = useGetAlldiaryQuery()
 
     const defaultData = {
         "AllDiary": [
@@ -125,15 +135,12 @@ const Timeline = () => {
         ]
     } as GetAlldiaryQuery
 
-    if (error) {
-        return <p>Error!</p>
-    }
 
-    console.log(data);
+    // console.log(data);
 
     return (
         <>
-            <FeedView data={data || defaultData} />
+            <FeedView data={prop.data || defaultData} />
             <Header />
         </>
     )
