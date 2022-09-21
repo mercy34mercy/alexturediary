@@ -1,4 +1,4 @@
-.loader {
+/* .loader {
   color: skyblue;
   font-size: 90px;
   text-indent: -9999em;
@@ -75,6 +75,35 @@
   }
   100% {
     -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+} */
+
+.loader_container {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  z-index: 999;
+  text-align: center;
+  color: #fff;
+}
+
+.loader {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: solid 4px;
+  border-color: #000000 #00000000 #00000000;
+  position: relative;
+  margin: 0 auto;
+  animation-name: spin;
+  animation-duration: 0.5s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+
+@keyframes spin {
+  to {
     transform: rotate(360deg);
   }
 }
