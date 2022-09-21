@@ -11,8 +11,8 @@ import Triangle from './components/atoms/Triangle';
 const App = () => {
   return (
     <div className="App">
-      <Triangle></Triangle>
-      {/* <Timeline></Timeline> */}
+      {/* <Triangle></Triangle> */}
+      <Timeline></Timeline>
     </div>
   );
 }

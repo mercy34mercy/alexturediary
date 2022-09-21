@@ -16,8 +16,7 @@
 
 .triangle-bottomleft {
   bottom: 200vh;
-  background-color: black;
-  border: 20px solid red;
+  background-color: red;
   width: 2000px;
   height: 2000px;
   position: absolute;
@@ -38,7 +37,7 @@
       opacity: 80%;
     }
     100% {
-    top: -22vh;/* 透明 */
+    top: -28vh;/* 透明 */
     left: -36vw;
     opacity: 0%;
     }
@@ -46,8 +45,7 @@
 /* triangle-fromleft */
 .triangle-fromleft {
   bottom: 200vh;
-  background-color: black;
-  border: 20px solid red;
+  background-color: red;
   width: 1000px;
   height: 500px;
   position: absolute;
@@ -77,7 +75,6 @@
 .triangle-buttomright {
   bottom: 300vh;
   background-color: red;
-  border: 20px solid black;
   width: 500px;
   height: 1000px;
   position: absolute;
