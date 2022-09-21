@@ -24,6 +24,10 @@ export const getNearestPostIndex = () => {
     }
 }
 
+export const isPostCentered = () => {
+    return (window.pageYOffset % 500 == 0)
+}
+
 const TimelineWrapper = () => {
     const { data, error, loading } = useGetAlldiaryQuery()
 
