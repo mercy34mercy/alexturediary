@@ -2,6 +2,7 @@
     AllDiary{
     Diaryid
     Imageurl
+    Englishword
     Word
     CreatedAt
     UpdatedAt
