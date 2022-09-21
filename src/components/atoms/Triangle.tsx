@@ -11,13 +11,15 @@ export const Triangle = () => {
       // borderStyle: "outset",
       // transform: "scale(0.2)"
     }}>
-      <div className="triangle">
+      <div className="triangle-fromleft">
       </div>
-      <div className="triangle2">
+      <div className="triangle-bottomleft">
       </div>
-      <div className="triangle3">
+      <div className="triangle-buttomright">
       </div>
-      <div className="triangle4">
+      <div className="triangle-fromright">
+      </div>
+      <div className="triangle-topright">
       </div>
     </div>
     </>
