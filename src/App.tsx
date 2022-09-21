@@ -1,15 +1,17 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
-import { MyComponent } from './Fetch';
+import { useEffect, useState } from 'react';
+import './stylesheets/App.css';
+import { FeedView } from './components/templates/FeedView';
+import Header from './components/atoms/Header';
+import Timeline from './pages/Timeline';
 
 
 const App = () => {
   return (
     <div className="App">
-      <MyComponent></MyComponent>
+    <Timeline></Timeline>
     </div>
   );
 }
 
-export default App;
+export default App

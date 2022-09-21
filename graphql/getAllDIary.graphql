@@ -1,0 +1,9 @@
+ query getAlldiary{
+    AllDiary{
+    Diaryid
+    Userid
+    Imageurl
+    Word
+    CreatedAt
+    UpdatedAt
+ }}

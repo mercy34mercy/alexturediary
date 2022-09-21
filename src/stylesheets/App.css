@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500;800&display=swap');
+
 .App {
   text-align: center;
 }
@@ -12,6 +14,8 @@
     animation: App-logo-spin infinite 20s linear;
   }
 }
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500;800&display=swap');
 
 .App-header {
   background-color: #282c34;

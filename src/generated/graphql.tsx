@@ -13,16 +13,16 @@ export type Scalars = {
   Boolean: boolean;
   Int: number;
   Float: number;
-  Timestamp: any;
+  Date: any;
 };
 
 export type Diary = {
   __typename?: 'Diary';
-  CreatedAt: Scalars['Timestamp'];
+  CreatedAt: Scalars['Date'];
   Diaryid: Scalars['ID'];
   Imageurl: Scalars['String'];
-  UpdatedAt: Scalars['Timestamp'];
-  User: User;
+  UpdatedAt: Scalars['Date'];
+  Userid: Scalars['String'];
   Word?: Maybe<Scalars['String']>;
 };
 
@@ -95,14 +95,58 @@ export type UserDiary = {
   User?: Maybe<User>;
 };
 
+export type GetAlldiaryQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type GetAlldiaryQuery = { __typename?: 'Query', AllDiary: Array<{ __typename?: 'Diary', Diaryid: string, Userid: string, Imageurl: string, Word?: string | null, CreatedAt: any, UpdatedAt: any }> };
+
 export type GetuserQueryVariables = Exact<{
   argument: Scalars['ID'];
 }>;
 
 
-export type GetuserQuery = { __typename?: 'Query', User: { __typename?: 'Me', User: { __typename?: 'User', Userid: string, Name: string }, Diary: Array<{ __typename?: 'Diary', Diaryid: string, Word?: string | null, Imageurl: string, CreatedAt: any, UpdatedAt: any, User: { __typename?: 'User', Userid: string, Name: string } }>, Followee: Array<{ __typename?: 'UserDiary', User?: { __typename?: 'User', Userid: string, Name: string } | null, Diary: Array<{ __typename?: 'Diary', Diaryid: string, Word?: string | null, Imageurl: string, CreatedAt: any, UpdatedAt: any, User: { __typename?: 'User', Userid: string, Name: string } }> }>, Follower: Array<{ __typename?: 'UserDiary', User?: { __typename?: 'User', Userid: string, Name: string } | null, Diary: Array<{ __typename?: 'Diary', Diaryid: string, Word?: string | null, Imageurl: string, CreatedAt: any, UpdatedAt: any, User: { __typename?: 'User', Userid: string, Name: string } }> }> } };
+export type GetuserQuery = { __typename?: 'Query', User: { __typename?: 'Me', User: { __typename?: 'User', Userid: string, Name: string }, Diary: Array<{ __typename?: 'Diary', Diaryid: string, Word?: string | null, Imageurl: string, CreatedAt: any, UpdatedAt: any, Userid: string }>, Followee: Array<{ __typename?: 'UserDiary', User?: { __typename?: 'User', Userid: string, Name: string } | null, Diary: Array<{ __typename?: 'Diary', Diaryid: string, Word?: string | null, Imageurl: string, CreatedAt: any, UpdatedAt: any, Userid: string }> }>, Follower: Array<{ __typename?: 'UserDiary', User?: { __typename?: 'User', Userid: string, Name: string } | null, Diary: Array<{ __typename?: 'Diary', Diaryid: string, Word?: string | null, Imageurl: string, CreatedAt: any, UpdatedAt: any, Userid: string }> }> } };
 
 
+export const GetAlldiaryDocument = gql`
+    query getAlldiary {
+  AllDiary {
+    Diaryid
+    Userid
+    Imageurl
+    Word
+    CreatedAt
+    UpdatedAt
+  }
+}
+    `;
+
+/**
+ * __useGetAlldiaryQuery__
+ *
+ * To run a query within a React component, call `useGetAlldiaryQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetAlldiaryQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetAlldiaryQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useGetAlldiaryQuery(baseOptions?: Apollo.QueryHookOptions<GetAlldiaryQuery, GetAlldiaryQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<GetAlldiaryQuery, GetAlldiaryQueryVariables>(GetAlldiaryDocument, options);
+      }
+export function useGetAlldiaryLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetAlldiaryQuery, GetAlldiaryQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<GetAlldiaryQuery, GetAlldiaryQueryVariables>(GetAlldiaryDocument, options);
+        }
+export type GetAlldiaryQueryHookResult = ReturnType<typeof useGetAlldiaryQuery>;
+export type GetAlldiaryLazyQueryHookResult = ReturnType<typeof useGetAlldiaryLazyQuery>;
+export type GetAlldiaryQueryResult = Apollo.QueryResult<GetAlldiaryQuery, GetAlldiaryQueryVariables>;
 export const GetuserDocument = gql`
     query getuser($argument: ID!) {
   User(argument: $argument) {
@@ -116,10 +160,7 @@ export const GetuserDocument = gql`
       Imageurl
       CreatedAt
       UpdatedAt
-      User {
-        Userid
-        Name
-      }
+      Userid
     }
     Followee {
       User {
@@ -132,10 +173,7 @@ export const GetuserDocument = gql`
         Imageurl
         CreatedAt
         UpdatedAt
-        User {
-          Userid
-          Name
-        }
+        Userid
       }
     }
     Follower {
@@ -149,10 +187,7 @@ export const GetuserDocument = gql`
         Imageurl
         CreatedAt
         UpdatedAt
-        User {
-          Userid
-          Name
-        }
+        Userid
       }
     }
   }
