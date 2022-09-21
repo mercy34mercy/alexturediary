@@ -1,43 +1,44 @@
 .header {
   width: 100%;
-  height: 60px;
+  height: 100px;
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   z-index: 999;
+  /* backdrop-filter: blur(30px);
+  background-color: rgba(255, 255, 255, 0.8); */
 }
 .inner {
-  padding: 0 30px; /*左右の余白確保*/
-  display: flex; /*ロゴとハンバーガーメニューを横に並べる*/
+  padding: 0 30px;
+  display: flex;
   align-items: center;
-  /* justify-content: space-between; */
   height: inherit;
   position: relative;
 }
 
-/* ハンバーガーメニュー */
+/* ハンバーガーメニュー
 .header__hamburger {
   position: inherit;
   margin-left: auto;
   width: 48px;
   height: 100%;
-}
+} */
 
-.hamburger {
+/* .hamburger {
   margin-left: auto;
-  background-color: transparent; /*buttonタグデフォルトスタイルを打ち消し*/
-  border-color: transparent; /*buttonタグデフォルトスタイルを打ち消し*/
+  background-color: transparent;
+  border-color: transparent;
   z-index: 9999;
   cursor: pointer;
-}
+} */
 
-a {
+/* a {
   font-family: 'Montserrat', sans-serif;
 }
 span {
   font-weight: bold;
-}
+} */
 
 /* .flex {
 
