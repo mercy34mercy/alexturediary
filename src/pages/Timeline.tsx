@@ -15,6 +15,15 @@ export const getMonthNameFromDiary = (dateString: string) => {
     return months[new Date(dateString).getMonth()];
 }
 
+export const getNearestPostIndex = () => {
+    const scroll = window.pageYOffset
+    if (scroll % 500 < 250) {
+        return Math.floor(scroll / 500)
+    } else {
+        return Math.floor(scroll / 500 + 1)
+    }
+}
+
 const TimelineWrapper = () => {
     const { data, error, loading } = useGetAlldiaryQuery()
 
@@ -23,42 +32,37 @@ const TimelineWrapper = () => {
     }
 
     const [isLoaded, setIsLoaded] = useState(false)
-    const [beforeScroll, setBeforeScroll] = useState(window.pageYOffset)
+    const beforeScroll = useRef(window.pageYOffset)
+    const [isPostCentered, setIsPostCentered] = useState(false)
 
     useEffect(() => {
-        setTimeout(() => {
-            setInterval(() => {
-                if (Math.floor(beforeScroll) % 500 != 0){
-                    if (beforeScroll == window.pageYOffset) {
-                        const index = getNearestPostIndex()
-                        console.log("scrolled to post_" + index);
-                        animateScroll.scrollTo(index * 500, {
-                            duration: 800,
-                            // delay: 100,
-                            smooth: true,
-                        })
-                    }
+        const intervalId = setInterval(() => {
+            if (Math.floor(window.pageYOffset) % 500 != 0){                
+                if (beforeScroll.current == window.pageYOffset) {
+                    const index = getNearestPostIndex()
+                    console.log("scrolled to post_" + index);
+                    animateScroll.scrollTo(index * 500, {
+                        duration: 800,
+                        // delay: 100,
+                        smooth: true,
+                    })
                 }
-                setBeforeScroll(window.pageYOffset)
-            }, 300)
-        }, 400)
-
-        const getNearestPostIndex = () => {
-            const scroll = window.pageYOffset
-            if (scroll % 500 < 250) {
-                return Math.floor(scroll / 500)
-            } else {
-                return Math.floor(scroll / 500 + 1)
             }
-        }
-    })
+            beforeScroll.current = window.pageYOffset
+        }, 300)
+
+        return ()=> clearInterval(intervalId)
+    }, [])
 
     if (!loading && !isLoaded) {
         setIsLoaded(true)
+        
         animateScroll.scrollTo(2000, { duration: 0, smooth: false })
         setTimeout(() => {
             animateScroll.scrollToTop({ duration: 1300, smooth: "cubic-bezier(.13,.08,0,1)" })
-        }, 20);
+        }, 20);        
+
+        console.log("Scroll observation started.");
     }
 
     const nodeRef = useRef(null);
