@@ -6,13 +6,16 @@ import Header from './components/atoms/Header';
 import Timeline from './pages/Timeline';
 import Animation from './animation';
 import Triangle from './components/atoms/Triangle';
+import { DebugInfo } from './components/atoms/DebugInfo';
+import { GlobalStyle } from './styled/Global';
 
 
 const App = () => {
   return (
     <div className="App">
-      {/* <Triangle></Triangle> */}
-      <Timeline></Timeline>
+    <DebugInfo></DebugInfo>
+    <GlobalStyle />
+    <Timeline></Timeline>
     </div>
   );
 }
