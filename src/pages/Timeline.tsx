@@ -1,7 +1,9 @@
 import React from 'react'
+import { useEffect, useState } from 'react';
 import { Diary, useGetAlldiaryQuery, useGetuserQuery } from '../generated/graphql';
 import { FeedView } from '../components/templates/FeedView';
-import Header from '../Header';
+import Header from '../components/atoms/Header';
+import Loading from '../components/atoms/Loading';
 
 
 export const getMonthNameFromDiary = (dateString: string) => {
@@ -11,8 +13,14 @@ export const getMonthNameFromDiary = (dateString: string) => {
 
 const Timeline = () => {
     const { data, error, loading } = useGetAlldiaryQuery()
+    const [isLoading,setIsLoading] = useState(true)
+
     if (loading) {
-        return <p>...loading</p>
+        return (
+            <>
+            {isLoading && <Loading/>}
+            </>
+            );
     }
 
     if (error) {

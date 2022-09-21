@@ -1,8 +1,8 @@
 import React from 'react';
-import logo from './logo.svg';
+import { useEffect, useState } from 'react';
 import './stylesheets/App.css';
 import { FeedView } from './components/templates/FeedView';
-import Header from './Header';
+import Header from './components/atoms/Header';
 import Timeline from './pages/Timeline';
 
 
@@ -14,4 +14,4 @@ const App = () => {
   );
 }
 
-export default App;
+export default App
