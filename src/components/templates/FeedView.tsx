@@ -1,8 +1,10 @@
 import React from "react";
-import { useGetuserQuery } from "../../generated/graphql";
+import { GetAlldiaryQuery, useGetuserQuery } from "../../generated/graphql";
 import styled from "styled-components";
 import { createGlobalStyle } from "styled-components";
 import { getMonthNameFromDiary } from "../../pages/Timeline";
+
+// console.log(prop.data.AllDiary);
 
 type Diary = {
     __typename?: "Query" | undefined;
@@ -18,7 +20,7 @@ type Diary = {
 }
 
 type prop = {
-    data:Diary
+    data:GetAlldiaryQuery
 }
 
 
@@ -147,6 +149,7 @@ export const FeedView = (prop: prop) => {
     `
 
     const PostDiv = styled.div`
+        background: white;
         width: 555px;
         height: 300px;
         /* background-color: pink; //debug */
@@ -168,6 +171,7 @@ export const FeedView = (prop: prop) => {
         top: 0;
         right: 0;
     `
+    
 
     return (
         <PostContainer>
@@ -186,7 +190,7 @@ export const FeedView = (prop: prop) => {
                             <span style={{color: "black"}}>{d.Word}</span>
                         </BasePostText>
                     </WordContainer>
-                    <UserName>{d.Userid}</UserName>
+                    <UserName>{d.User.Name}</UserName>
                 </PostDiv>
             ))}
         </PostContainer>

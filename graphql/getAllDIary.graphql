@@ -1,9 +1,18 @@
  query getAlldiary{
     AllDiary{
     Diaryid
-    Userid
     Imageurl
     Word
     CreatedAt
     UpdatedAt
+    User{
+      Userid
+      Name
+    }Emotion{
+      Sad
+      Happy
+      Fear
+      Surprise
+      Angry
+    }
  }}

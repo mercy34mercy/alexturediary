@@ -4,6 +4,8 @@ import { Diary, useGetAlldiaryQuery, useGetuserQuery } from '../generated/graphq
 import { FeedView } from '../components/templates/FeedView';
 import Header from '../components/atoms/Header';
 import Loading from '../components/atoms/Loading';
+import Animation from '../animation';
+
 
 
 export const getMonthNameFromDiary = (dateString: string) => {
@@ -33,8 +35,8 @@ const Timeline = () => {
 
     return (
         <div>
+            <Animation></Animation>
             <FeedView data={data}/>
-            <Header/>
         </div>
     )
 }
