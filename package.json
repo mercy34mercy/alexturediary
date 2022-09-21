@@ -12,11 +12,15 @@
     "@types/node": "^16.11.58",
     "@types/react": "^18.0.19",
     "@types/react-dom": "^18.0.6",
+    "@types/react-scroll": "^1.8.4",
+    "@types/react-transition-group": "^4.4.5",
     "graphql": "^16.6.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.3.0",
     "react-scripts": "^2.1.3",
+    "react-scroll": "^1.8.7",
+    "react-transition-group": "^4.4.5",
     "styled-components": "^5.3.5",
     "typescript": "^4.8.3",
     "web-vitals": "^2.1.4"
@@ -40,7 +44,7 @@
   "browserslist": {
     "production": [
       ">0.2%",
-      "not dF",
+      "not dead",
       "not op_mini all"
     ],
     "development": [
@@ -54,6 +58,10 @@
     "@graphql-codegen/typescript": "2.7.3",
     "@graphql-codegen/typescript-operations": "2.5.3",
     "@graphql-codegen/typescript-react-apollo": "^3.3.3",
-    "@types/styled-components": "^5.1.26"
+    "@types/styled-components": "^5.1.26",
+    "stylelint": "^14.12.0",
+    "stylelint-config-standard": "^28.0.0",
+    "stylelint-processor-styled-components": "^1.10.0",
+    "ts-node": "^10.9.1"
   }
 }

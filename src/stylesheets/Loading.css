@@ -97,7 +97,7 @@
   position: relative;
   margin: 0 auto;
   animation-name: spin;
-  animation-duration: 0.5s;
+  animation-duration: .5s;
   animation-iteration-count: infinite;
   animation-timing-function: linear;
 }

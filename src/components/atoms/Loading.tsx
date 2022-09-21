@@ -4,7 +4,8 @@ import "../../stylesheets/Loading.css";
 import { Logo } from "./Logo";
 
 const LogoContainer = styled.div`
-    margin-bottom: 20px;
+    margin-bottom: 30px;
+    transform: scale(1.5);
     width: auto;
 `
 
