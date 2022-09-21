@@ -1,0 +1,148 @@
+/* triangle-bottomlef */
+ @keyframes up {
+  0% {
+  top: 60vh;/* 透明 */
+  left: -30vw;
+  }
+  60%{
+    opacity: 80%;
+  }
+  100% {
+  top: 50vh;/* 透明 */
+  left: -15vw;
+    opacity: 0%;
+  }
+} 
+
+.triangle-bottomleft {
+  bottom: 200vh;
+  background-color: black;
+  border: 20px solid red;
+  width: 2000px;
+  height: 2000px;
+  position: absolute;
+  clip-path: polygon(-50% 0%, 0% 100%, 70% -50%);
+  transform:rotate(-10deg);  
+  animation-name: up ;
+  animation-iteration-count: 1;
+  animation-duration: 1s
+} 
+
+/* triangle-fromleft */
+@keyframes from-left {
+  0% {
+    top: -20vh;/* 透明 */
+    left: -45vw;
+    }
+    60%{
+      opacity: 80%;
+    }
+    100% {
+    top: -22vh;/* 透明 */
+    left: -36vw;
+    opacity: 0%;
+    }
+}
+/* triangle-fromleft */
+.triangle-fromleft {
+  bottom: 200vh;
+  background-color: black;
+  border: 20px solid red;
+  width: 1000px;
+  height: 500px;
+  position: absolute;
+  clip-path: polygon(0% 0, 0% 100%, 100% 80%);
+  animation-name: from-left ;
+  animation-iteration-count: 1;
+  animation-duration: 1s
+}
+
+/* triangle-buttomright */
+@keyframes from-buttomright {
+  0% {
+    top: 65vh;/* 透明 */
+    right: -25vw;
+    }
+    60%{
+      opacity: 80%;
+    }
+    100% {
+    top: 50vh;/* 透明 */
+    right: -10vw;
+    opacity: 0%;
+    }
+}
+
+/* triangle-buttomright */
+.triangle-buttomright {
+  bottom: 300vh;
+  background-color: red;
+  border: 20px solid black;
+  width: 500px;
+  height: 1000px;
+  position: absolute;
+  clip-path: polygon(0% 0, -20% 80%, 100% 100%);
+  transform:rotate(-7deg); 
+  animation-name: from-buttomright ;
+  animation-iteration-count: 1;
+  animation-duration: 1s
+}
+
+/* triangle-topright */
+@keyframes from-topright {
+  0% {
+  top: -70vw;/* 透明 */
+  right: -70vw;
+  }
+  60%{
+    opacity: 80%;
+  }
+  100% {
+    top: -60vw;/* 透明 */
+    right: -55vw;
+    opacity: 0%;
+  }
+} 
+
+.triangle-topright {
+  background-color: red;
+  bottom: 200vh;
+  width: 1200px;
+  height: 1250px;
+  position: absolute;
+  clip-path: polygon(0% 0%, -80% 120%, 50% 80%);
+  transform:rotate(5deg); 
+  animation-name: from-topright ;
+  animation-iteration-count: 1;
+  animation-duration: 1s
+}
+
+/* triangle-frmmright */
+@keyframes from-fromright {
+  0% {
+    top: 0vh;/* 透明 */
+    right: -45vw;
+    }
+    60%{
+      opacity: 80%;
+    }
+    100% {
+    top: 10vh;/* 透明 */
+    right: -20vw;
+    opacity: 0%;
+    }
+}
+
+/* triangle-frmmright */
+.triangle-fromright {
+  background-color: red;
+  bottom: 200vh;
+  width: 500px;
+  height: 1000px;
+  position: absolute;
+  clip-path: polygon(0% 0, -20% 80%, 100% 100%);
+  transform:rotate(-60deg); 
+  animation-name: from-fromright ;
+  animation-iteration-count: 1;
+  animation-duration: 1s
+}

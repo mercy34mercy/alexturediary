@@ -1,0 +1,27 @@
+@keyframes signup {
+  0% {
+  opacity: 0.1;/* 透明 */
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+  opacity: 0.1;/* 不透明 */
+  }
+}
+
+
+@keyframes animation-sample{
+  0%{
+      width: 0;
+  }
+  100%{
+      width: 100%;
+  }
+}
+
+.animation-box{
+  animation-name: signup ;
+  animation-iteration-count: infinite;
+}
+
