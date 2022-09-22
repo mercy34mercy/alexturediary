@@ -10,8 +10,6 @@ import { animateScroll, scroller } from 'react-scroll';
 import BackgroundRandomCircles from '../components/atoms/BackgroundRandomCircles';
 import FeedViewEnglishBackground from '../components/atoms/FeedViewEnglishBackground';
 
-
-
 export const getMonthNameFromDiary = (dateString: string): string => {
     const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
     return months[new Date(dateString).getMonth()];
