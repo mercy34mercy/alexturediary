@@ -1,5 +1,6 @@
 import React from "react";
 import { BackgroundRandomCircles as SingleCircle } from "./SingleCircle";
+import { isPostCentered } from "../../pages/Timeline";
 
 const BackgroundRandomCircles = () => {
   

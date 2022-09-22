@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { isPostCentered } from "../../pages/Timeline";
+import { getDiaryFromIndex, getNearestPostIndex, isPostCentered } from "../../pages/Timeline";
 import '../../stylesheets/SingleCircle.css'
 import styled from 'styled-components'
 import { CSSTransition } from "react-transition-group";
@@ -22,7 +22,7 @@ export const BackgroundRandomCircles = () => {
     const randomsSize = Math.floor(Math.random() * 100);
 
     const inputemotion = "neg"
-    let displayemotion = ""
+    let displayColor = "";
 
     const arr = [
         {
@@ -52,11 +52,21 @@ export const BackgroundRandomCircles = () => {
         },
     ]
 
-    for (var i = 0; i < 5; i++) {
-        if (arr[i].emotion == inputemotion)
-            displayemotion = arr[i].color
+  if(Number(getDiaryFromIndex(getNearestPostIndex()).Emotion.Fear) > 0) {
+    displayColor = arr[0].color
     }
-    console.log(displayemotion)
+  else if((Number(getDiaryFromIndex(getNearestPostIndex()).Emotion.Sad)) > 0) {
+    displayColor = arr[1].color
+  }
+  else if((Number(getDiaryFromIndex(getNearestPostIndex()).Emotion.Surprise)) > 0) {
+    displayColor = arr[2].color
+  }
+  else {
+    displayColor = arr[3].color
+  }
+
+  console.log(getDiaryFromIndex(getNearestPostIndex()).Emotion);
+  
 
     return (
         <BackgroundContainer>
@@ -64,7 +74,7 @@ export const BackgroundRandomCircles = () => {
                 <div
                     className="animation-box"
                     style={{
-                        backgroundColor: displayemotion,
+                        backgroundColor: displayColor,
                         borderRadius: "50%",
                         animationDuration: randomAnimationDulation + "s",
                         marginTop: 120,

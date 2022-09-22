@@ -9,14 +9,13 @@ import BackgroundTriangles from './components/atoms/BackgroundTriangles';
 import { DebugInfo } from './components/atoms/DebugInfo';
 import { GlobalStyle } from './styled/Global';
 import { isPostCentered } from './pages/Timeline';
-import Effect from './components/atoms/Effect';
 import { useGetAlldiaryQuery } from './generated/graphql';
 
 const App = () => {
   return (
     <div className="App">
     {/* <Effect></Effect> */}
-    <Animation></Animation>
+    <BackgroundRandomCircles></BackgroundRandomCircles>
     <DebugInfo></DebugInfo>
     <GlobalStyle />
     <Timeline></Timeline>

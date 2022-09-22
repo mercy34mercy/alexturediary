@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useGetAlldiaryQuery } from "../../generated/graphql";
 import { getNearestPostIndex } from "../../pages/Timeline";
-import { Triangle } from "./Triangle";
+import { BackgroundTriangles } from "./BackgroundTriangles";
 
 const Effect = () => {
   const { data, error, loading } = useGetAlldiaryQuery();
@@ -14,7 +14,7 @@ const Effect = () => {
         console.log("asfdfsdf")
         if (parseInt(data.AllDiary[getNearestPostIndex()].Emotion.Angry) > 0) {
           console.log("djfaskdfsaj")
-          return <Triangle />;
+          return <BackgroundTriangles />;
         }
       }
     }, 300);
@@ -29,13 +29,13 @@ const Effect = () => {
           "angry",
           data.AllDiary[getNearestPostIndex()].Emotion.Angry
         );
-        return <Triangle />;
+        return <BackgroundTriangles />;
       } else {
         return <div></div>;
       }
     } else {
       console.log("angry");
-      return <Triangle />;
+      return <BackgroundTriangles />;
     }
   };
 

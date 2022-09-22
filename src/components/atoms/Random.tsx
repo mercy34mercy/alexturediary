@@ -1,11 +1,7 @@
 import { Any } from "@react-spring/types";
 import React from "react";
-import "../../stylesheets/animation.css";
+import "../../stylesheets/SingleCircle.css";
 import { getNearestPostIndex, getDiaryFromIndex } from '../../pages/Timeline'
-
-type prop = {
-  emotion: object;
-};
 
 export const RandomObject = () => {
   const randomWidth = Math.floor(Math.random() * window.outerWidth);
