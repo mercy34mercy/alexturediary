@@ -7,7 +7,7 @@ import Header from '../components/atoms/Header';
 import Loading from '../components/atoms/Loading';
 import { Transition } from 'react-transition-group';
 import { animateScroll, scroller } from 'react-scroll';
-import Animation from '../animation';
+import BackgroundRandomCircles from '../components/atoms/BackgroundRandomCircles';
 import FeedViewEnglishBackground from '../components/atoms/FeedViewEnglishBackground';
 
 
@@ -244,6 +244,7 @@ const Timeline = (prop: prop) => {
     return (
         <>
             <FeedViewEnglishBackground />
+            <BackgroundRandomCircles />
             <FeedView data={data || defaultData} />
             <Header />
         </>

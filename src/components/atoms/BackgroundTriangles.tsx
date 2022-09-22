@@ -2,7 +2,7 @@ import { Any } from "@react-spring/types";
 import React from "react";
 import '../../stylesheets/Triangle.css'
 
-export const Triangle = () => {
+export const BackgroundTriangles = () => {
   
   return (
     <>
@@ -26,4 +26,4 @@ export const Triangle = () => {
   );
 };
 
-export default Triangle
+export default BackgroundTriangles

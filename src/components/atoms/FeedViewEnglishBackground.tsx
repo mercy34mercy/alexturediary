@@ -14,11 +14,11 @@ const FeedViewEnglishBackground = () => {
     },[])
 
     return (
-        <EnglishBackgroundContinaer>
+        <BackgroundContainer>
             <CSSTransition in={isDisplay} timeout={1500} classNames="fade" unmountOnExit>
                 <BackgroundText>{getDiaryFromIndex(getNearestPostIndex()).Englishword}</BackgroundText>
             </CSSTransition>
-        </EnglishBackgroundContinaer>
+        </BackgroundContainer>
     )
 }
 
@@ -28,7 +28,7 @@ const BackgroundText = styled.a`
     color: #393939;
 `
 
-const EnglishBackgroundContinaer = styled.div`
+const BackgroundContainer = styled.div`
     position: fixed;
     font-size: 300px;
     top: 0;
@@ -56,4 +56,5 @@ const EnglishBackgroundContinaer = styled.div`
         opacity: 0;
 }
 `
+
 export default FeedViewEnglishBackground

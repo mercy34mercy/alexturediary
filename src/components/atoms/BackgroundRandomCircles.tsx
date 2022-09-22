@@ -1,14 +1,14 @@
 import React from "react";
-import { RandomObject } from "./components/atoms/Random";
+import { BackgroundRandomCircles as SingleCircle } from "./SingleCircle";
 
-const Animation = () => {
+const BackgroundRandomCircles = () => {
   
   const len: number = Math.floor(Math.random() * 100);
 
   var loop = () => {
     const items = [];
     for (let i = 0; i < len; i++) {
-      items.push(<RandomObject />);
+      items.push(<SingleCircle />);
     }
     return <ul>{items}</ul>;
   };
@@ -16,4 +16,4 @@ const Animation = () => {
   return <div> {loop()}</div>;
 };
 
-export default Animation;
+export default BackgroundRandomCircles;
