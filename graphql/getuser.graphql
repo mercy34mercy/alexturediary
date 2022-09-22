@@ -5,6 +5,7 @@ query getuser($argument: ID!) {
         Name
     }Diary{
         Diaryid
+        Englishword
         Word
         Imageurl
         CreatedAt
@@ -25,6 +26,7 @@ query getuser($argument: ID!) {
             Name
         }Diary{
             Diaryid
+            Englishword
             Word
             Imageurl
             CreatedAt
@@ -46,6 +48,7 @@ query getuser($argument: ID!) {
             Name
         }Diary{
             Diaryid
+            Englishword
             Word
             Imageurl
             CreatedAt

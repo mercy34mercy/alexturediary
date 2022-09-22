@@ -21,10 +21,11 @@ export type Diary = {
   CreatedAt: Scalars['Date'];
   Diaryid: Scalars['ID'];
   Emotion: Emotion;
+  Englishword: Scalars['String'];
   Imageurl: Scalars['String'];
   UpdatedAt: Scalars['Date'];
   User: User;
-  Word?: Maybe<Scalars['String']>;
+  Word: Scalars['String'];
 };
 
 export type Emotion = {
@@ -33,7 +34,7 @@ export type Emotion = {
   CreatedAt: Scalars['Date'];
   Diaryid: Scalars['ID'];
   Fear: Scalars['String'];
-  Happy?: Maybe<Scalars['String']>;
+  Happy: Scalars['String'];
   Sad: Scalars['String'];
   Surprise: Scalars['String'];
   UpdatedAt: Scalars['Date'];
@@ -76,16 +77,17 @@ export type MutationCreateUserArgs = {
 };
 
 export type NewDiary = {
+  Englishword: Scalars['String'];
   Imageurl: Scalars['String'];
   Userid: Scalars['String'];
-  Word?: InputMaybe<Scalars['String']>;
+  Word: Scalars['String'];
 };
 
 export type NewEmotion = {
   Angry: Scalars['String'];
   Diaryid: Scalars['String'];
   Fear: Scalars['String'];
-  Happy?: InputMaybe<Scalars['String']>;
+  Happy: Scalars['String'];
   Sad: Scalars['String'];
   Surprise: Scalars['String'];
 };
@@ -126,14 +128,14 @@ export type UserDiary = {
 export type GetAlldiaryQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type GetAlldiaryQuery = { __typename?: 'Query', AllDiary: Array<{ __typename?: 'Diary', Diaryid: string, Imageurl: string, Word?: string | null, CreatedAt: any, UpdatedAt: any, User: { __typename?: 'User', Userid: string, Name: string }, Emotion: { __typename?: 'Emotion', Sad: string, Happy?: string | null, Fear: string, Surprise: string, Angry: string } }> };
+export type GetAlldiaryQuery = { __typename?: 'Query', AllDiary: Array<{ __typename?: 'Diary', Diaryid: string, Imageurl: string, Englishword: string, Word: string, CreatedAt: any, UpdatedAt: any, User: { __typename?: 'User', Userid: string, Name: string }, Emotion: { __typename?: 'Emotion', Sad: string, Happy: string, Fear: string, Surprise: string, Angry: string } }> };
 
 export type GetuserQueryVariables = Exact<{
   argument: Scalars['ID'];
 }>;
 
 
-export type GetuserQuery = { __typename?: 'Query', User: { __typename?: 'Me', User: { __typename?: 'User', Userid: string, Name: string }, Diary: Array<{ __typename?: 'Diary', Diaryid: string, Word?: string | null, Imageurl: string, CreatedAt: any, UpdatedAt: any, User: { __typename?: 'User', Userid: string, Name: string }, Emotion: { __typename?: 'Emotion', Sad: string, Happy?: string | null, Fear: string, Surprise: string, Angry: string } }>, Followee: Array<{ __typename?: 'UserDiary', User?: { __typename?: 'User', Userid: string, Name: string } | null, Diary: Array<{ __typename?: 'Diary', Diaryid: string, Word?: string | null, Imageurl: string, CreatedAt: any, UpdatedAt: any, User: { __typename?: 'User', Userid: string, Name: string }, Emotion: { __typename?: 'Emotion', Sad: string, Happy?: string | null, Fear: string, Surprise: string, Angry: string } }> }>, Follower: Array<{ __typename?: 'UserDiary', User?: { __typename?: 'User', Userid: string, Name: string } | null, Diary: Array<{ __typename?: 'Diary', Diaryid: string, Word?: string | null, Imageurl: string, CreatedAt: any, UpdatedAt: any, User: { __typename?: 'User', Userid: string, Name: string }, Emotion: { __typename?: 'Emotion', Sad: string, Happy?: string | null, Fear: string, Surprise: string, Angry: string } }> }> } };
+export type GetuserQuery = { __typename?: 'Query', User: { __typename?: 'Me', User: { __typename?: 'User', Userid: string, Name: string }, Diary: Array<{ __typename?: 'Diary', Diaryid: string, Englishword: string, Word: string, Imageurl: string, CreatedAt: any, UpdatedAt: any, User: { __typename?: 'User', Userid: string, Name: string }, Emotion: { __typename?: 'Emotion', Sad: string, Happy: string, Fear: string, Surprise: string, Angry: string } }>, Followee: Array<{ __typename?: 'UserDiary', User?: { __typename?: 'User', Userid: string, Name: string } | null, Diary: Array<{ __typename?: 'Diary', Diaryid: string, Englishword: string, Word: string, Imageurl: string, CreatedAt: any, UpdatedAt: any, User: { __typename?: 'User', Userid: string, Name: string }, Emotion: { __typename?: 'Emotion', Sad: string, Happy: string, Fear: string, Surprise: string, Angry: string } }> }>, Follower: Array<{ __typename?: 'UserDiary', User?: { __typename?: 'User', Userid: string, Name: string } | null, Diary: Array<{ __typename?: 'Diary', Diaryid: string, Englishword: string, Word: string, Imageurl: string, CreatedAt: any, UpdatedAt: any, User: { __typename?: 'User', Userid: string, Name: string }, Emotion: { __typename?: 'Emotion', Sad: string, Happy: string, Fear: string, Surprise: string, Angry: string } }> }> } };
 
 
 export const GetAlldiaryDocument = gql`
@@ -141,6 +143,7 @@ export const GetAlldiaryDocument = gql`
   AllDiary {
     Diaryid
     Imageurl
+    Englishword
     Word
     CreatedAt
     UpdatedAt
@@ -194,6 +197,7 @@ export const GetuserDocument = gql`
     }
     Diary {
       Diaryid
+      Englishword
       Word
       Imageurl
       CreatedAt
@@ -217,6 +221,7 @@ export const GetuserDocument = gql`
       }
       Diary {
         Diaryid
+        Englishword
         Word
         Imageurl
         CreatedAt
@@ -241,6 +246,7 @@ export const GetuserDocument = gql`
       }
       Diary {
         Diaryid
+        Englishword
         Word
         Imageurl
         CreatedAt

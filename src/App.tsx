@@ -12,17 +12,14 @@ import { isPostCentered } from './pages/Timeline';
 import Effect from './components/atoms/Effect';
 import { useGetAlldiaryQuery } from './generated/graphql';
 
-
 const App = () => {
-    const { data, error, loading } = useGetAlldiaryQuery()
-    return (
-        <div className="App">
-            <Effect></Effect>
-            <DebugInfo></DebugInfo>
-            <GlobalStyle />
-            <Timeline></Timeline>
-        </div>
-    );
+  return (
+    <div className="App">
+    <DebugInfo></DebugInfo>
+    <GlobalStyle />
+    <Timeline></Timeline>
+    </div>
+  );
 }
 
 export default App

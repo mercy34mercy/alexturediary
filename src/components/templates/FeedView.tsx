@@ -5,31 +5,6 @@ import { createGlobalStyle } from "styled-components";
 import { getMonthNameFromDiary } from "../../pages/Timeline";
 import { Element as ScrollElement } from "react-scroll";
 
-export type Diary = {
-    __typename?: "Query" | undefined;
-    AllDiary: {
-        __typename?: "Diary" | undefined;
-        Diaryid: string;
-        Imageurl: string;
-        Word?: string | null | undefined;
-        CreatedAt: any;
-        UpdatedAt: any;
-        User: {
-            __typename?: "User" | undefined;
-            Userid: string;
-            Name: string;
-        };
-        Emotion: {
-            __typename?: "Emotion" | undefined;
-            Sad: string;
-            Happy: string;
-            Fear: string;
-            Surprise: string;
-            Angry: string;
-        };
-    }[];
-}
-
 type prop = {
     data: GetAlldiaryQuery
 }
@@ -100,7 +75,7 @@ const CreatedAtMonth = styled(BasePostText)`
 const PostContainer = styled.div`
     margin-top: calc(50vh - 150px);
     margin-bottom: calc(50vh - 150px);
-    background-color: white;
+    /* background-color: white; */
 `
 
 const PostDiv = styled.div`
@@ -196,7 +171,7 @@ export const FeedView = (prop: prop) => {
                 <ScrollElement name={"post_" + index.toString()}>
                     <PostDiv>
                         <CreatedAtContainer>
-                            <CreatedAtDay>{new Date(d.CreatedAt).getDay()}</CreatedAtDay>
+                            <CreatedAtDay>{new Date(d.CreatedAt).getDate()}</CreatedAtDay>
                             <CreatedAtMonth>{getMonthNameFromDiary(d.CreatedAt)}</CreatedAtMonth>
                         </CreatedAtContainer>
                         <PostImageWrap>
