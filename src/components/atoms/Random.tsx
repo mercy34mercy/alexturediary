@@ -14,33 +14,28 @@ export const RandomObject = () => {
 
   // console.log(prop.emotion);
 
-  const inputemotion = "neg"
+  const inputemotion = "Sad"
   let displayemotion = ""
   var arr = [
     {
       id: 1,
-      emotion: "happy",
-      color: "orange"
-    },
-    {
-      id: 2,
-      emotion: "neg",
-      color: "green"
-    },
-    {
-      id: 3,
-      emotion: "happy",
-      color: "green"
-    },
-    {
-      id: 4,
-      emotion: "happy",
+      emotion: "Fear",
       color: "skyblue"
     },
     {
-      id: 5,
-      emotion: "happy",
-      color: "purple"
+      id: 2,
+      emotion: "Sad",
+      color: "blue"
+    },
+    {
+      id: 3,
+      emotion: "Surprise",
+      color: "yellow"
+    },
+    {
+      id: 4,
+      emotion: "Happy",
+      color: "orange"
     },
   ]
   
