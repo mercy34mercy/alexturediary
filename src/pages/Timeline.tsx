@@ -1,23 +1,23 @@
 import React from 'react'
 import { useEffect, useState, useRef } from 'react';
 import styled from 'styled-components';
-import { GetAlldiaryQuery, GetAlldiaryQueryResult, useGetAlldiaryQuery, useGetuserQuery } from '../generated/graphql';
-import { Diary } from '../components/templates/FeedView';
+import { GetAlldiaryQuery, useGetAlldiaryQuery, Diary } from '../generated/graphql';
 import { FeedView } from '../components/templates/FeedView';
 import Header from '../components/atoms/Header';
 import Loading from '../components/atoms/Loading';
 import { Transition } from 'react-transition-group';
 import { animateScroll, scroller } from 'react-scroll';
 import Animation from '../animation';
+import FeedViewEnglishBackground from '../components/atoms/FeedViewEnglishBackground';
 
 
 
-export const getMonthNameFromDiary = (dateString: string) => {
+export const getMonthNameFromDiary = (dateString: string): string => {
     const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
     return months[new Date(dateString).getMonth()];
 }
 
-export const getNearestPostIndex = () => {
+export const getNearestPostIndex = (): number => {
     const scroll = window.pageYOffset
     if (scroll % 500 < 250) {
         return Math.floor(scroll / 500)
@@ -26,8 +26,74 @@ export const getNearestPostIndex = () => {
     }
 }
 
-export const isPostCentered = () => {
+export const isPostCentered = (): boolean => {
     return (window.pageYOffset % 500 == 0)
+}
+
+export const getAlldiaryQueryWrapper = (): GetAlldiaryQuery => {
+        const { data, error, loading } = useGetAlldiaryQuery()
+
+        const defaultData = {
+            "AllDiary": [
+                {
+                    "__typename": "Diary",
+                    "Diaryid": "",
+                    "Imageurl": "",
+                    "Word": "",
+                    "CreatedAt": "",
+                    "UpdatedAt": "",
+                    "User": {
+                        "__typename": "User",
+                        "Userid": "",
+                        "Name": ""
+                    },
+                    "Emotion": {
+                        "__typename": "Emotion",
+                        "Sad": "",
+                        "Happy": "",
+                        "Fear": "",
+                        "Surprise": "",
+                        "Angry": ""
+                    }
+                },
+                {
+                    "__typename": "Diary",
+                    "Diaryid": "",
+                    "Imageurl": "",
+                    "Word": "",
+                    "CreatedAt": "",
+                    "UpdatedAt": "",
+                    "User": {
+                        "__typename": "User",
+                        "Userid": "",
+                        "Name": ""
+                    },
+                    "Emotion": {
+                        "__typename": "Emotion",
+                        "Sad": "",
+                        "Happy": "",
+                        "Fear": "",
+                        "Surprise": "",
+                        "Angry": ""
+                    }
+                }
+            ]
+        } as GetAlldiaryQuery
+
+        return data || defaultData
+}
+
+export const getDiaryFromIndex = (index: number): Diary => {
+    const data = getAlldiaryQueryWrapper()
+    var reversedAllDiary: Array<any> = []
+    data.AllDiary.slice(0).reverse().map((d) => {
+        reversedAllDiary.push(d)
+    })
+    
+    // console.log(reversedAllDiary);
+    // console.log(reversedAllDiary[index]);
+    
+    return reversedAllDiary[index]
 }
 
 const TimelineWrapper = () => {
@@ -39,7 +105,7 @@ const TimelineWrapper = () => {
 
     const [isLoaded, setIsLoaded] = useState(false)
     const beforeScroll = useRef(window.pageYOffset)
-    const [isPostCentered, setIsPostCentered] = useState(false)
+    // const [isPostCentered, setIsPostCentered] = useState(false)
 
     useEffect(() => {
         const intervalId = setInterval(() => {
@@ -123,7 +189,7 @@ type prop = {
 
 const Timeline = (prop: prop) => {
 
-    // const { data, error, loading } = useGetAlldiaryQuery()
+    const { data, error, loading } = useGetAlldiaryQuery()
 
     const defaultData = {
         "AllDiary": [
@@ -173,11 +239,12 @@ const Timeline = (prop: prop) => {
     } as GetAlldiaryQuery
 
 
-    // console.log(data);
+    console.log(data);
 
     return (
         <>
-            <FeedView data={prop.data || defaultData} />
+            <FeedViewEnglishBackground />
+            <FeedView data={data || defaultData} />
             <Header />
         </>
     )

@@ -9,14 +9,13 @@ import Triangle from './components/atoms/Triangle';
 import { DebugInfo } from './components/atoms/DebugInfo';
 import { GlobalStyle } from './styled/Global';
 
-
 const App = () => {
   return (
-    <div className="App">
+  <div className="App">
     <DebugInfo></DebugInfo>
     <GlobalStyle />
     <Timeline></Timeline>
-    </div>
+  </div>
   );
 }
 
