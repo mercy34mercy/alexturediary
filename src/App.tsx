@@ -15,6 +15,8 @@ import { useGetAlldiaryQuery } from './generated/graphql';
 const App = () => {
   return (
     <div className="App">
+    {/* <Effect></Effect> */}
+    <Animation></Animation>
     <DebugInfo></DebugInfo>
     <GlobalStyle />
     <Timeline></Timeline>

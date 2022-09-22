@@ -1,7 +1,7 @@
 import { Any } from "@react-spring/types";
 import React from "react";
 import "../../stylesheets/animation.css";
-
+import { getNearestPostIndex, getDiaryFromIndex } from '../../pages/Timeline'
 
 type prop = {
   emotion: object;
@@ -13,7 +13,6 @@ export const RandomObject = () => {
   const randomHeight = Math.floor(Math.random() * 300);
   const randomsSize = Math.floor(Math.random() * 100);
 
-  const inputemotion = "Sad";
   let displaycolor = "";
   var arr = [
     {
@@ -38,11 +37,21 @@ export const RandomObject = () => {
     },
   ];
 
-  if (arr[i].emotion == inputemotion) displaycolor = arr[i].color;
+  if(Number(getDiaryFromIndex(getNearestPostIndex()).Emotion.Fear) > 0) {
+    displaycolor = arr[0].color
+  }
+  else if((Number(getDiaryFromIndex(getNearestPostIndex()).Emotion.Sad)) > 0) {
+    displaycolor = arr[1].color
+  }
+  else if((Number(getDiaryFromIndex(getNearestPostIndex()).Emotion.Surprise)) > 0) {
+    displaycolor = arr[2].color
+  }
+  else {
+    displaycolor = arr[3].color
+  }
 
-
-
-  displaycolor = "red";
+  console.log(getDiaryFromIndex(getNearestPostIndex()).Emotion);
+  
 
   return (
     <>
@@ -57,7 +66,7 @@ export const RandomObject = () => {
               marginTop: 150,
               height: randomsSize + 20,
               width: randomsSize + 20,
-              position: "absolute",
+              position: "fixed",
               right: randomWidth,
               top: randomHeight,
             }}
