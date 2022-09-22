@@ -1,8 +1,10 @@
 import React from "react";
-import { RandomObject } from "./components/atoms/Random";
+import { RandomObject } from "./Random";
+import { isPostCentered } from "../../pages/Timeline";
 
 const Animation = () => {
   
+
   const len: number = Math.floor(Math.random() * 100);
 
   var loop = () => {

@@ -48,7 +48,6 @@ export const RandomObject = () => {
     if(arr[i].emotion == inputemotion)
     displayemotion = arr[i].color
   }
-  console.log(displayemotion)
   
   return (
     <>
