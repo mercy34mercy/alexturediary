@@ -1,7 +1,7 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { CSSTransition } from 'react-transition-group'
 import styled from 'styled-components'
-import { getAlldiaryQueryWrapper, getNearestPostIndex, getDiaryFromIndex, isPostCentered } from '../../pages/Timeline'
+import {  getNearestPostIndex, getDiaryFromIndex, isPostCentered } from '../../pages/Timeline'
 
 const FeedViewEnglishBackground = () => {
     const [isDisplay, setDisplay] = useState(false)

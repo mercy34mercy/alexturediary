@@ -1,6 +1,5 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import styled from 'styled-components'
-import { ReactDOM } from 'react'
 import { getNearestPostIndex, isPostCentered } from '../../pages/Timeline'
 
 const FixedTextBox = styled.div`

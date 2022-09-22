@@ -1,4 +1,3 @@
-import { Any } from "@react-spring/types";
 import React from "react";
 import '../../stylesheets/animation.css'
 

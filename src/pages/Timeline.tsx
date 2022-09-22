@@ -1,13 +1,11 @@
 import React from 'react'
 import { useEffect, useState, useRef } from 'react';
-import styled from 'styled-components';
 import { GetAlldiaryQuery, useGetAlldiaryQuery, Diary } from '../generated/graphql';
 import { FeedView } from '../components/templates/FeedView';
 import Header from '../components/atoms/Header';
 import Loading from '../components/atoms/Loading';
 import { Transition } from 'react-transition-group';
 import { animateScroll, scroller } from 'react-scroll';
-import Animation from '../animation';
 import FeedViewEnglishBackground from '../components/atoms/FeedViewEnglishBackground';
 
 
